@@ -22,6 +22,12 @@ class App extends Component {
     }
   };
 
+  handleDelete = (e) => {
+    this.setState((prevState) => ({
+      contacts: prevState.contacts.filter((elem) => elem.id !== e.target.id),
+    }));
+  };
+
   render() {
     return (
       <div className="App">
@@ -29,7 +35,10 @@ class App extends Component {
         <Form handleSubmit={this.handleSubmit} name={this.state.name} />
 
         <h2 className={style.title}>Contacts</h2>
-        <ContactList contacts={this.state.contacts} />
+        <ContactList
+          contacts={this.state.contacts}
+          handleDelete={this.handleDelete}
+        />
       </div>
     );
   }

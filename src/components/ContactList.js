@@ -9,6 +9,14 @@ class ContactList extends Component {
         {this.props.contacts.map((el) => (
           <li key={el.id}>
             {el.name}: {el.number}
+            <button
+              type="button"
+              className={style.deleteButton}
+              id={el.id}
+              onClick={this.props.handleDelete}
+            >
+              Delete
+            </button>
           </li>
         ))}
       </ul>
@@ -20,4 +28,5 @@ export default ContactList;
 
 ContactList.propTypes = {
   contacts: PropTypes.array.isRequired,
+  handleDelete: PropTypes.func.isRequired,
 };
