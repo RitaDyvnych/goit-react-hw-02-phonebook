@@ -5,7 +5,7 @@ import { v4 as uuidv4 } from "uuid";
 
 class Form extends Component {
   state = {
-    name: this.props.name,
+    name: "",
     number: "",
   };
 
@@ -34,8 +34,10 @@ class Form extends Component {
         >
           <label htmlFor={this.inputNameId}>Name</label>
           <input
+            className={style.input}
             id={this.inputNameId}
             value={this.state.name}
+            autoComplete="off"
             type="text"
             name="name"
             pattern="^[a-zA-Zа-яА-Я]+(([' -][a-zA-Zа-яА-Я ])?[a-zA-Zа-яА-Я]*)*$"
@@ -45,8 +47,10 @@ class Form extends Component {
           />
           <label htmlFor={this.inputNumberId}>Number</label>
           <input
+            className={style.input}
             id={this.inputNumberId}
             value={this.state.number}
+            autoComplete="off"
             type="tel"
             name="number"
             pattern="\+?\d{1,4}?[-.\s]?\(?\d{1,3}?\)?[-.\s]?\d{1,4}[-.\s]?\d{1,4}[-.\s]?\d{1,9}"
@@ -54,7 +58,9 @@ class Form extends Component {
             required
             onChange={this.handleChangeInput}
           />
-          <button type="submit">Add contact</button>
+          <button type="submit" className={style.btn}>
+            Add contact
+          </button>
         </form>
       </>
     );
@@ -65,5 +71,4 @@ export default Form;
 
 Form.propTypes = {
   handleSubmit: PropTypes.func.isRequired,
-  name: PropTypes.string.isRequired,
 };

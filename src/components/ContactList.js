@@ -5,13 +5,13 @@ import style from "./contacts.module.css";
 class ContactList extends Component {
   render() {
     return (
-      <ul>
+      <ul className={style.list}>
         {this.props.contacts.map((el) => (
-          <li key={el.id}>
+          <li className={style.listItem} key={el.id}>
             {el.name}: {el.number}
             <button
               type="button"
-              className={style.deleteButton}
+              className={style.btnDelete}
               id={el.id}
               onClick={this.props.handleDelete}
             >
