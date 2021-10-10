@@ -1,6 +1,7 @@
 import "./App.css";
 import { Component } from "react";
 import { v4 as uuidv4 } from "uuid";
+import style from "./components/contacts.module.css";
 import Form from "./components/Form";
 import ContactList from "./components/ContactList";
 import Filter from "./components/Filter";
@@ -24,16 +25,11 @@ class App extends Component {
   render() {
     return (
       <div className="App">
-        <h1>Phonebook</h1>
-        <Form />
-        <input
-          type="text"
-          name="name"
-          pattern="^[a-zA-Zа-яА-Я]+(([' -][a-zA-Zа-яА-Я ])?[a-zA-Zа-яА-Я]*)*$"
-          title="Имя может состоять только из букв, апострофа, тире и пробелов. Например Adrian, Jacob Mercer, Charles de Batz de Castelmore d'Artagnan и т. п."
-          required
-        />
-        <button type="button">Add contact</button>
+        <h1 className={style.title}>Phonebook</h1>
+        <Form handleSubmit={this.handleSubmit} name={this.state.name} />
+
+        <h2 className={style.title}>Contacts</h2>
+        <ContactList contacts={this.state.contacts} />
       </div>
     );
   }
